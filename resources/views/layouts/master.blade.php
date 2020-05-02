@@ -23,7 +23,7 @@
 	<link rel="stylesheet" href="{{ asset('css/linearicons.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/themify-icons.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+	<link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/nouislider.min.css') }}">
@@ -37,7 +37,9 @@
 <body>
 
     <div id="app">
-		@include('layouts.header')
+		@include('layouts.header')		
+		<div class="header-image"></div>
+		
         @yield('content')
 		@include('layouts.footer')
 		@yield('js')
@@ -61,6 +63,7 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="{{ asset('js/gmaps.min.js') }}"></script>
 	<script src="{{ asset('js/main.js') }}"></script>
+
 </body>
 
 </html>

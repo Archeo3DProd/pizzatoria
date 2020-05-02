@@ -3,42 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Pizzas;
-use App\Ingredients;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class PizzasController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function home()
+    public function index()
     {
-        $ingredients_pizzas = [];
-        $ingredients_prix = [];
-
-
-        $ingredients = [];
-
-
         $pizzas = Pizzas::all();
-        $array_prix = [];
-        foreach ($pizzas as $pizza) {
-            $prix = 10;
-            $ingredients_pizzas = $pizza->ingredients;
-            $ingredients = preg_split("/[,]+/", $ingredients_pizzas);
-            foreach ($ingredients as $ingredient) {
-                $ingredients_prix = Ingredients::where('name', $ingredient)->firstOrFail();
-                $prix += $ingredients_prix->price;
-            }
-            $pizza->prix = (number_format($prix, 2, ',', ' '));
-        }
-
-        return view('home', [
-            'pizzas' => $pizzas,
-            'ingredients_pizzas' => $ingredients_pizzas
-        ]);
     }
 
     /**
@@ -65,10 +41,10 @@ class HomeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Pizzas  $pizzas
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Pizzas $pizzas)
     {
         //
     }
@@ -76,10 +52,10 @@ class HomeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Pizzas  $pizzas
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Pizzas $pizzas)
     {
         //
     }
@@ -88,10 +64,10 @@ class HomeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Pizzas  $pizzas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Pizzas $pizzas)
     {
         //
     }
@@ -99,10 +75,10 @@ class HomeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Pizzas  $pizzas
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Pizzas $pizzas)
     {
         //
     }

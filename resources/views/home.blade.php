@@ -2,35 +2,29 @@
 
 @section('content')
 
-    <div class="pizzas-container">        
+    <div class="pizzas-container">
+        <h3 class="titre-page mt-3">Nos Pizzas</h3>
+        @foreach ($pizzas as $pizza)
         <div class="card mt-3 mb-3 ml-auto mr-auto" style="max-width: 540px;">
             <div class="row no-gutters">
                 <div class="col-md-4">
-                    <img src="/img/pizza_1.jpg" class="card-img" alt="pizza">
+                    <img src="img/{{ $pizza->image_url }}" class="card-img" alt="pizza">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <h5 class="card-title">{{ $pizza->nom }}</h5>
+                        <p class="card-text">{{ $pizza->ingredients }}.</p>
+                        <p class="card-text">CHF {{ $pizza->prix }}</p>
                     </div>
+                    <form action="post" class="form-group">
+                        <button class="btn btn-success">Commander
+                            <i class="fas fa-cart"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
-        </div>       
-        <div class="card mt-3 mb-3 ml-auto mr-auto" style="max-width: 540px;">
-            <div class="row no-gutters">
-                <div class="col-md-4">
-                    <img src="/img/pizza_2.jpg" class="card-img" alt="pizza">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div>      
+        @endforeach
     </div>
 
 @stop

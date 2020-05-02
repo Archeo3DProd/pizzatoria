@@ -15,5 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 // Main page
 Route::get('/', 'HomeController@home')->name('home');
-Route::get('/composer', 'HomeController@composer')->name('composer');
+Route::get('/composer', 'IngredientsController@composer')->name('composer');
 Route::get('/contact', 'HomeController@contact')->name('contact');
+
+// Panier
+Route::get('/cart', 'CartController@index')->name('cart.index');
+Route::post('/cart', 'CartController@store')->name('cart.store');
+Route::get('/cart/reset', 'CartController@reset')->name('cart.reset');
+Route::delete('/cart/{product}', 'CartController@destroy')->name('cart.destroy');
+Route::post('/cart/{product}/save', 'CartController@save')->name('cart.save');

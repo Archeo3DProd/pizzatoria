@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Ingredients;
+use App\Categories;
 use Illuminate\Http\Request;
 
 class IngredientsController extends Controller
@@ -14,21 +16,15 @@ class IngredientsController extends Controller
     
     public function composer()
     {
-        $categories = Ingredients::all()->groupBy('category');
-        dump($categories);
+        $categories = Categories::all();
+        $ingredients = Ingredients::all()->sortBy('name');
 
-        /*
-        $i = 0;
-        foreach ($ingredients->category as $ingredient) {
-            $i++;
-        }
-        dump($i);
-        */
         return view('composer', [
-            $categories
+            'categories' => $categories,
+            'ingredients' => $ingredients
         ]);
     }
-    
+
     public function index()
     {
         //

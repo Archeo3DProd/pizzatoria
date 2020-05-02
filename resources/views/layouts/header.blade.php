@@ -6,14 +6,35 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav m-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="{{ route('home') }}">Pizzas <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{{ route('home') }}" onclick="navbarActive(this, 0)">Nos Pizzas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('composer') }}">Pizza composer</a>
+        <a class="nav-link" href="{{ route('composer') }}" onclick="navbarActive(this, 1)">Créer votre Pizza</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <a class="nav-link" href="{{ route('composer') }}" onclick="navbarActive(this, 2)">Panier</a>
       </li>
     </ul>
   </div>
 </nav>
+
+<script>
+
+
+  function retrieveActiveLink() {
+    retrievedLink = localStorage.getItem('navbaractivelinkIndex');
+		const liens = document.getElementsByClassName("nav-link");
+		for (i = 0; i < liens.length; i++) {
+			if (liens[i].closest('li').classList.contains('active')) {
+			liens[i].closest('li').classList.remove('active')
+			}
+		}
+    link = document.getElementsByClassName('nav-item')[retrievedLink];
+    link.classList.add('active');
+  }
+  retrieveActiveLink()
+	
+  function navbarActive(lienClique, index) {
+    localStorage.setItem('navbaractivelinkIndex', index);
+	}
+	</script>
