@@ -15,25 +15,34 @@ class HomeController extends Controller
      */
     public function home()
     {
+    // Affichage des pizzas //  
         $ingredients_pizzas = [];
         $ingredients_prix = [];
 
-
         $ingredients = [];
 
-
         $pizzas = Pizzas::all();
-        $array_prix = [];
+
         foreach ($pizzas as $pizza) {
+            
+            // Prix de base
             $prix = 10;
+
+            // Liste des ingrédients pour affichage
             $ingredients_pizzas = $pizza->ingredients;
-            $ingredients = preg_split("/[,]+/", $ingredients_pizzas);
+
+            // Split des ingrédients pour recherche dans la bdd des ingrédients
+            $ingredients = preg_split("/(, )/", $pizza->ingredients);
+
+            // Récupérer le prix de chaque ingrédients et calculer le prix final
             foreach ($ingredients as $ingredient) {
                 $ingredients_prix = Ingredients::where('name', $ingredient)->firstOrFail();
                 $prix += $ingredients_prix->price;
             }
+            // Formater le prix
             $pizza->prix = (number_format($prix, 2, ',', ' '));
         }
+    // Fin de l'affichage des pizzas //  
 
         return view('home', [
             'pizzas' => $pizzas,

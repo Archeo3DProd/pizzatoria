@@ -16,14 +16,20 @@
                         <p class="card-text">{{ $pizza->ingredients }}.</p>
                         <p class="card-text">CHF {{ $pizza->prix }}</p>
                     </div>
-                    <form action="post" class="form-group">
-                        <button class="btn btn-success">Commander
-                            <i class="fas fa-cart"></i>
-                        </button>
-                    </form>
                 </div>
+                <form action="{{ route('panier') }}" method="POST" class="form-group">
+                    {{ csrf_field() }}
+                    <button class="btn btn-success">Commander&nbsp;&nbsp;<i class="fas fa-shopping-cart"></i></button>                        
+                        <input type="hidden" id="pizza_image_url" name="pizza_image_url" class="hidden" value="{{ $pizza->image_url }}">
+                        <input type="hidden" id="pizza_nom" name="pizza_nom" class="hidden" value="{{ $pizza->nom }}">
+                        <input type="hidden" id="pizza_image_url" name="pizza_image_url" class="hidden" value="{{ $pizza->image_url }}">
+                        <input type="hidden" id="pizza_ingredients" name="pizza_ingredients" class="hidden" value="{{ $pizza->ingredients }}">
+                        <input type="hidden" id="pizza_prix" name="pizza_prix" class="hidden" value="{{ $pizza->prix }}">
+                        <input type="hidden" id="token" name="token" class="hidden" value="{{ Session::getId() }}">
+                        <input type="hidden" id="commande_id" name="commande_id" class="hidden" value="{{ $pizza->id }}">
+                </form>
             </div>
-        </div>      
+        </div>
         @endforeach
     </div>
 

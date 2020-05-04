@@ -32,9 +32,6 @@
 
 /*-------  Fin de Stripe  ----------*/
 
-.app {
-
-}
 
 .titre-page {
   text-align: center;
@@ -50,6 +47,15 @@
 }
 
 /*-------  Fin de Pizza  ----------*/
+
+
+/*----------  Boutons  ----------*/
+
+.primary-btn {
+    color: blue;
+  }
+  
+  /*-------  Fin de Boutons  ----------*/
 
 
 /*----------  Composer  ----------*/
@@ -73,7 +79,7 @@
   margin: 0.5rem auto 0;
   text-align: center;
   padding: 1.6rem 0;
-  background-color: #a1eea7;
+  background-color: #28a745;
 }
 
 .item-selected, .total-wrapper {
@@ -358,6 +364,7 @@
 }
   
 .total-a-payer {
-    background-color: #a1eea7;
+    background-color: #28a745;
+    color: black;
 }
   /*-------  Fin de Composer  ----------*/

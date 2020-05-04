@@ -36,8 +36,12 @@
                     Total : <em class="total">CHF 10.00</em>
                 </div>
                 <div class="panier-ajouter">
-                    <form action="post">
-                        <button class="btn primary-btn">Ajouter au panier</button>
+                    <form action="{{ route('panier') }}" method="POST">
+                    {{ csrf_field() }}
+                        <button class="btn btn-success mt-3">Ajouter au panier</button>
+                        <input type="hidden" id="pizza_nom" name="pizza_nom" class="hidden" value="Pizza personnelle">
+                        <input type="hidden" id="pizza_ingredients" name="pizza_ingredients" class="hidden" value="">
+                        <input type="hidden" id="pizza_prix" name="pizza_prix" class="hidden" value="">
                     </form>
                 </div>
             </div>
@@ -45,8 +49,13 @@
     </div>
 
     <script>
+        let prix_pizza = 10;
         function addIngredient(nom, prix) {
+
+            const formulaire = document.querySelector('form');
+
             const liste = document.getElementsByClassName('list-group-selected')[0];
+
             let li = document.createElement("li");
             li.classList.add("item-selected");
             li.classList.add("mt-2");
@@ -75,6 +84,16 @@
             total = document.getElementsByClassName("total")[0];
             total.innerText = total.innerText.replace("CHF ", "");
             total.innerText = "CHF " + ((parseFloat(prix)+ parseFloat(total.innerText)).toFixed(2));
+
+            // Créer les champs cachés
+            const pizza_ingredients = document.getElementById("pizza_ingredients");
+            pizza_ingredients.value += nom + ", ";
+
+            const pizza_prix = document.getElementById("pizza_prix");
+            prix_pizza += parseFloat(prix);
+            console.log("Prix : " + prix_pizza)
+            
+            pizza_prix.value = (parseFloat(prix_pizza)).toFixed(2);
 
         }
 

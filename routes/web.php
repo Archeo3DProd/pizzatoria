@@ -15,12 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 // Main page
 Route::get('/', 'HomeController@home')->name('home');
+Route::post('/', 'HomeController@home')->name('home');
 Route::get('/composer', 'IngredientsController@composer')->name('composer');
 Route::get('/contact', 'HomeController@contact')->name('contact');
 
 // Panier
-Route::get('/cart', 'CartController@index')->name('cart.index');
-Route::post('/cart', 'CartController@store')->name('cart.store');
-Route::get('/cart/reset', 'CartController@reset')->name('cart.reset');
-Route::delete('/cart/{product}', 'CartController@destroy')->name('cart.destroy');
-Route::post('/cart/{product}/save', 'CartController@save')->name('cart.save');
+Route::get('/panier', 'PanierController@index');
+Route::post('/panier', 'PanierController@store')->name('panier');
+Route::delete('/panier', 'PanierController@destroy')->name('panier.destroy');
+//Route::get('/panier/reset', 'PanierController@reset')->name('panier.reset');
+//Route::delete('/panier/{product}', 'PanierController@destroy')->name('panier.destroy');
+//Route::post('/panier/{product}/save', 'PanierController@save')->name('panier.save');
