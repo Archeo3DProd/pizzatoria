@@ -15,6 +15,7 @@ class PanierController extends Controller
      */
     public function index(Request $request)
     {
+        $total = 0;
 
         $cookie_token = $request->cookie('laravel_session');
 
@@ -22,7 +23,8 @@ class PanierController extends Controller
         
         return view('panier', [
             'request' => $request,
-            'commandes' => $commandes
+            'commandes' => $commandes,
+            'total' => $total
         ]);
     }
 
@@ -45,43 +47,11 @@ class PanierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function effacer($id)
     {
-        Commandes::remove($id);
-        dd($id);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        $recherche = Commandes::where('id', $id);
+        Commandes::where('id', $id)->delete();
+        
+        return back();
     }
 }

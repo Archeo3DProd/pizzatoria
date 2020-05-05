@@ -22,7 +22,4 @@ Route::get('/contact', 'HomeController@contact')->name('contact');
 // Panier
 Route::get('/panier', 'PanierController@index');
 Route::post('/panier', 'PanierController@store')->name('panier');
-Route::delete('/panier', 'PanierController@destroy')->name('panier.destroy');
-//Route::get('/panier/reset', 'PanierController@reset')->name('panier.reset');
-//Route::delete('/panier/{product}', 'PanierController@destroy')->name('panier.destroy');
-//Route::post('/panier/{product}/save', 'PanierController@save')->name('panier.save');
+Route::get('/panier/{pizza}', 'PanierController@effacer')->name('panier.effacer');

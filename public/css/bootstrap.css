@@ -2715,13 +2715,17 @@ fieldset:disabled a.btn {
 
 .btn-light:hover {
     color: #212529;
-    background-color: #e2e6ea;
-    border-color: #dae0e5
+    background-color: #28a745;
+    border-color: #28a745;
+    color: white;
 }
 
 .btn-light.focus,
 .btn-light:focus {
-    box-shadow: 0 0 0 .2rem rgba(248, 249, 250, .5)
+    background-color: #28a745;
+    border-color: #28a745;
+    box-shadow: 0 0 0 .2rem #28a745;
+    color: white;
 }
 
 .btn-light.disabled,

@@ -29,19 +29,17 @@
                 </div>
                 <ul class="list-group-selected">
                 </ul>
-                <div class="total-wrapper livraison mt-2">
-                    <span class="nom-selected"><input type="checkbox" id="livraison" name="livraison" class="mr-2" onclick="livraison()"><label for="livraison">Livraison</label></span><em class="prix-selected">CHF 5.00</em>
-                </div>
                 <div class="total-wrapper total-a-payer mt-2">
                     Total : <em class="total">CHF 10.00</em>
                 </div>
                 <div class="panier-ajouter">
                     <form action="{{ route('panier') }}" method="POST">
                     {{ csrf_field() }}
-                        <button class="btn btn-success mt-3">Ajouter au panier</button>
+                        <button class="btn btn-success mt-3">Ajouter au panier&nbsp;&nbsp;<i class="fas fa-shopping-cart"></i></button>
                         <input type="hidden" id="pizza_nom" name="pizza_nom" class="hidden" value="Pizza personnelle">
                         <input type="hidden" id="pizza_ingredients" name="pizza_ingredients" class="hidden" value="">
                         <input type="hidden" id="pizza_prix" name="pizza_prix" class="hidden" value="">
+                        <input type="hidden" id="token" name="token" class="hidden" value="{{ Session::getId() }}">
                     </form>
                 </div>
             </div>
@@ -68,6 +66,7 @@
             em.classList.add('prix-selected');
             em.innerText = 'CHF ' + parseFloat(prix).toFixed(2);
 
+            // Croix pour supprimer un ingrédient
             let supprimerIngredient = document.createElement('span');
             supprimerIngredient.innerText = 'X';
             supprimerIngredient.classList.add("supprimer");
@@ -75,6 +74,7 @@
 
             const prixContainer = document.createElement('div');
 
+            // Hiérarchie
             li.appendChild(span);
             prixContainer.appendChild(em);
             prixContainer.appendChild(supprimerIngredient);
@@ -91,7 +91,6 @@
 
             const pizza_prix = document.getElementById("pizza_prix");
             prix_pizza += parseFloat(prix);
-            console.log("Prix : " + prix_pizza)
             
             pizza_prix.value = (parseFloat(prix_pizza)).toFixed(2);
 
@@ -106,20 +105,6 @@
             total.innerText = "CHF " + ((parseFloat(total.innerText) - prixADeduire).toFixed(2));
 
             prix.closest('li').remove();
-        }
-
-        let status = 0;
-        function livraison() {
-            total = document.getElementsByClassName("total")[0];
-            total.innerText = total.innerText.replace("CHF ", "");
-            const prix = parseFloat(total.innerText);
-            if (status == 0) {
-                total.innerText = "CHF " + ((parseFloat(prix)+ parseFloat(5)).toFixed(2));
-                status = 1;
-            } else {
-                total.innerText = "CHF " + ((parseFloat(prix)- parseFloat(5)).toFixed(2));
-                status = 0;
-            }
         }
     </script>
 @stop

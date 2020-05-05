@@ -49,6 +49,59 @@
 /*-------  Fin de Pizza  ----------*/
 
 
+/*----------  Commande  ----------*/
+
+.panier-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.commande-titre {
+    text-align: center;
+}
+
+.commande-wrapper {
+    margin: 0 auto;
+    width: 22rem;
+    border: 1px solid #333;
+    border-radius: 10px;
+}
+
+.card-body-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.livraison-fond-rouge {
+    background-color: #dc3545;
+    color: white;
+}
+
+.livraison-fond-vert {
+    background-color: #28a745;
+    color: white;
+}
+
+.passer-commande {
+    text-align: center;
+}
+
+.passer-commande form {
+    margin: 0;
+}
+
+.passer-commande .btn-light {
+    width: 100%;
+    border-radius: 9px;
+}
+
+/*-----Fin de Commande  ----------*/
+
+
 /*----------  Boutons  ----------*/
 
 .primary-btn {
@@ -80,6 +133,22 @@
   text-align: center;
   padding: 1.6rem 0;
   background-color: #28a745;
+  border-radius: 10px 10px 0 0;
+}
+
+.ingredients-category-container-commande {
+  margin-top: 1rem;
+  width: 22rem;
+  min-width: 300px;
+  max-width: 600px;
+}
+
+.ingredients-category-container-commande h4 {
+  margin: 0.5rem auto 0;
+  text-align: center;
+  padding: 1.6rem 0;
+  background-color: #28a745;
+  border-radius: 10px 10px 0 0;
 }
 
 .item-selected, .total-wrapper {
@@ -365,6 +434,16 @@
   
 .total-a-payer {
     background-color: #28a745;
-    color: black;
+    color: white;
+    border-radius: 0 0 9px 9px;
 }
+
+.panier-ajouter {
+    text-align: center;
+}
+
+.panier-ajouter .btn-success {
+    width: 100%;
+}
+
   /*-------  Fin de Composer  ----------*/

@@ -9,7 +9,7 @@
         <a class="nav-link" href="{{ route('home') }}" onclick="navbarActive(this, 0)">Nos Pizzas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('composer') }}" onclick="navbarActive(this, 1)">Créer votre Pizza</a>
+        <a class="nav-link" href="{{ route('composer') }}" onclick="navbarActive(this, 1)">Composez votre Pizza</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ route('panier') }}" onclick="navbarActive(this, 2)">Panier</a>
